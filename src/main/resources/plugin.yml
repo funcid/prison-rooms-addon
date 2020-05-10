@@ -1,0 +1,9 @@
+main: ru.func.wallaccessmanager.WallAccessManager
+author: func
+website: funcid.ru
+name: WallAccessManager
+version: 1.0.0
+commands:
+  room:
+    usage: ''
+    description: ''

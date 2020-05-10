@@ -1,4 +1,4 @@
-package ru.func.wallaccessmanager.blockaction.chest;
+package ru.func.wallaccessmanager.action.chest;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

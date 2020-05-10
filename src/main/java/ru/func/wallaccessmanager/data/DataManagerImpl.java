@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import ru.func.wallaccessmanager.BlockFixHandler;
 import ru.func.wallaccessmanager.PlayerAccess;
 import ru.func.wallaccessmanager.WallAccessManager;
-import ru.func.wallaccessmanager.blockaction.chest.Chest;
+import ru.func.wallaccessmanager.action.chest.Chest;
 import ru.func.wallaccessmanager.room.Room;
 
 import java.util.*;

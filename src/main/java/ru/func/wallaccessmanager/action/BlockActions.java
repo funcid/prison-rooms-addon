@@ -1,9 +1,9 @@
-package ru.func.wallaccessmanager.blockaction;
+package ru.func.wallaccessmanager.action;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.bukkit.Location;
-import ru.func.wallaccessmanager.blockaction.chest.Chest;
+import ru.func.wallaccessmanager.action.chest.Chest;
 import ru.func.wallaccessmanager.data.DataManager;
 
 /**

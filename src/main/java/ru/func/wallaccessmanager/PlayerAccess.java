@@ -9,7 +9,7 @@ import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import ru.func.wallaccessmanager.data.DataManager;
-import ru.func.wallaccessmanager.blockaction.chest.Chest;
+import ru.func.wallaccessmanager.action.chest.Chest;
 import ru.func.wallaccessmanager.room.Room;
 
 import java.util.ArrayList;

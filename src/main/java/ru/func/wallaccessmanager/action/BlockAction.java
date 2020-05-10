@@ -1,4 +1,4 @@
-package ru.func.wallaccessmanager.blockaction;
+package ru.func.wallaccessmanager.action;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

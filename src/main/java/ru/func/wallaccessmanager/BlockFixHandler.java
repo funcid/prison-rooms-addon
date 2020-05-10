@@ -7,7 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_12_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
-import ru.func.wallaccessmanager.blockaction.BlockActions;
+import ru.func.wallaccessmanager.action.BlockActions;
 import ru.func.wallaccessmanager.data.DataManager;
 import ru.func.wallaccessmanager.listener.BuyInventoryHandler;
 import ru.func.wallaccessmanager.room.Room;

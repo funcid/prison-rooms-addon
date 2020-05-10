@@ -1,4 +1,4 @@
-package ru.func.wallaccessmanager.blockaction;
+package ru.func.wallaccessmanager.action;
 
 import net.minecraft.server.v1_12_R1.IChatBaseComponent;
 import net.minecraft.server.v1_12_R1.PacketPlayOutChat;

@@ -1,4 +1,4 @@
-package ru.func.wallaccessmanager.blockaction;
+package ru.func.wallaccessmanager.action;
 
 import lombok.AllArgsConstructor;
 import org.bukkit.Location;
@@ -8,7 +8,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import ru.func.wallaccessmanager.PlayerAccess;
 import ru.func.wallaccessmanager.data.DataManager;
-import ru.func.wallaccessmanager.blockaction.chest.Chest;
+import ru.func.wallaccessmanager.action.chest.Chest;
 import ru.func.wallaccessmanager.util.ChestAnimationUtil;
 
 /**

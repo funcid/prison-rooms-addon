@@ -9,7 +9,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import ru.func.wallaccessmanager.PlayerAccess;
 import ru.func.wallaccessmanager.data.DataManager;
-import ru.func.wallaccessmanager.blockaction.chest.Chest;
+import ru.func.wallaccessmanager.action.chest.Chest;
 import ru.func.wallaccessmanager.util.ChestAnimationUtil;
 
 /**

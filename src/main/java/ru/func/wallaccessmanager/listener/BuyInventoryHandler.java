@@ -1,9 +1,10 @@
 package ru.func.wallaccessmanager.listener;
 
 import lombok.AllArgsConstructor;
+import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -35,6 +36,11 @@ public class BuyInventoryHandler implements Listener {
 
     public static void open(Room room, Player player) {
         ItemStack itemStack = new ItemStack(Material.PAPER);
+        net.minecraft.server.v1_12_R1.ItemStack item = CraftItemStack.asNMSCopy(itemStack);
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setLong("room_id", room.getId());
+        item.setTag(tag);
+        itemStack = CraftItemStack.asBukkitCopy(item);
         ItemMeta meta = itemStack.getItemMeta();
         meta.setDisplayName("[КУПИТЬ] Доступ в " + room.getName());
         meta.setLore(Arrays.asList(
@@ -54,10 +60,16 @@ public class BuyInventoryHandler implements Listener {
             e.setCancelled(true);
             if (e.getCurrentItem() != null) {
                 ItemStack itemStack = e.getCurrentItem();
-                String val = ChatColor.stripColor(itemStack.getItemMeta().getLore().get(1).split("\\s+")[1]);
+                net.minecraft.server.v1_12_R1.ItemStack item = CraftItemStack.asNMSCopy(itemStack);
+                if (!item.hasTag())
+                    return;
+                NBTTagCompound tag = item.getTag();
+                if (tag == null || !tag.hasKey("room_id"))
+                    return;
+                long roomId = tag.getLong("room_id");
                 if (itemStack.getItemMeta() != null) {
                     Stream.of(Room.values())
-                            .filter(room -> room.getId().toString().equals(val))
+                            .filter(room -> room.getId().equals(roomId))
                             .findAny()
                             .ifPresent(room -> {
                                 Player player = (Player) e.getWhoClicked();

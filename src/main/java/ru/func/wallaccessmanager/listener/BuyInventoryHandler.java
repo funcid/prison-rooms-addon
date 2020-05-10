@@ -1,12 +1,9 @@
 package ru.func.wallaccessmanager.listener;
 
 import lombok.AllArgsConstructor;
-import net.minecraft.server.v1_12_R1.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_12_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -67,6 +64,10 @@ public class BuyInventoryHandler implements Listener {
                                 UUID uuid = player.getUniqueId();
                                 PlayerAccess playerAccess = DataManager.PLAYER_ACCESS.get(uuid);
                                 List<Room> rooms = playerAccess.getAvailableRooms();
+                                if(rooms.contains(room)) {
+                                    player.sendMessage("У тебя уже куплена эта комната!");
+                                    return;
+                                }
                                 // Если удалось списать деньги, комната еще не куплена и родительская комната есть у игрока
                                 if (plugin.getDataManager().withdraw(uuid, room.getPrice()) &&
                                         !rooms.contains(room) &&

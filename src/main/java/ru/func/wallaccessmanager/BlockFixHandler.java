@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_12_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+import ru.func.wallaccessmanager.action.BlockAction;
 import ru.func.wallaccessmanager.action.BlockActions;
 import ru.func.wallaccessmanager.data.DataManager;
 import ru.func.wallaccessmanager.listener.BuyInventoryHandler;
@@ -49,12 +50,15 @@ public class BlockFixHandler {
                                     }
                                 } else if (packet instanceof PacketPlayInUseItem) {
                                     PacketPlayInUseItem pc = (PacketPlayInUseItem) packet;
-                                    if(!pc.c().equals(EnumHand.OFF_HAND)) {
+                                    if(pc.c().equals(EnumHand.OFF_HAND)) {
+                                        cancel = true;
+                                    } else {
                                         Location location = new Location(DataManager.WORLD, pc.a().getX(), pc.a().getY(), pc.a().getZ());
                                         // Обработка кастомных событийных блоков
                                         for (BlockActions action : BlockActions.values()) {
-                                            if (action.getAction().getLocation().equals(location)) {
-                                                MinecraftServer.getServer().postToMainThread(() -> action.getAction().execute(player));
+                                            BlockAction currentAction = action.getAction();
+                                            if (currentAction.getLocation().equals(location)) {
+                                                MinecraftServer.getServer().postToMainThread(() -> currentAction.execute(player));
                                                 cancel = true;
                                                 break;
                                             }
@@ -67,8 +71,6 @@ public class BlockFixHandler {
                                                 break;
                                             }
                                         }
-                                    } else {
-                                        cancel = true;
                                     }
                                 }
                             }

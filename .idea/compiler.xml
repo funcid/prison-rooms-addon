@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for WallAccessManager" enabled="true">
+        <sourceOutputDir name="../../Downloads/serv/plugins/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../Downloads/serv/plugins/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="WallAccessManager" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

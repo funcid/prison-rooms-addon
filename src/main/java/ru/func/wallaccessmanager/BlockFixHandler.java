@@ -49,22 +49,26 @@ public class BlockFixHandler {
                                     }
                                 } else if (packet instanceof PacketPlayInUseItem) {
                                     PacketPlayInUseItem pc = (PacketPlayInUseItem) packet;
-                                    Location location = new Location(DataManager.WORLD, pc.a().getX(), pc.a().getY(), pc.a().getZ());
-                                    // Обработка кастомных событийных блоков
-                                    for (BlockActions action : BlockActions.values()) {
-                                        if (action.getAction().getLocation().equals(location)) {
-                                            MinecraftServer.getServer().postToMainThread(() -> action.getAction().execute(player));
-                                            cancel = true;
-                                            break;
+                                    if(!pc.c().equals(EnumHand.OFF_HAND)) {
+                                        Location location = new Location(DataManager.WORLD, pc.a().getX(), pc.a().getY(), pc.a().getZ());
+                                        // Обработка кастомных событийных блоков
+                                        for (BlockActions action : BlockActions.values()) {
+                                            if (action.getAction().getLocation().equals(location)) {
+                                                MinecraftServer.getServer().postToMainThread(() -> action.getAction().execute(player));
+                                                cancel = true;
+                                                break;
+                                            }
                                         }
-                                    }
-                                    // Обработка правого клика по блоку стены
-                                    for (Room room : Room.values()) {
-                                        if (room.getWall().isPresent() && room.getWall().get().getBlocks().containsKey(location)) {
-                                            MinecraftServer.getServer().postToMainThread(() -> BuyInventoryHandler.open(room, player));
-                                            cancel = true;
-                                            break;
+                                        // Обработка правого клика по блоку стены
+                                        for (Room room : Room.values()) {
+                                            if (room.getWall().isPresent() && room.getWall().get().getBlocks().containsKey(location)) {
+                                                MinecraftServer.getServer().postToMainThread(() -> BuyInventoryHandler.open(room, player));
+                                                cancel = true;
+                                                break;
+                                            }
                                         }
+                                    } else {
+                                        cancel = true;
                                     }
                                 }
                             }
